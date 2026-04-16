@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SendEmailController;
 use App\Http\controllers\HomeController;
 use App\Http\controllers\UserController;
 
@@ -33,6 +34,11 @@ Route::get('/how', function () {
 });
 
 Auth::routes();
+
+Route::get('/sent-emails', [SendEmailController::class, 'sentEmails'])->name('sent-emails');
+Route::get('/send-user-email', [SendEmailController::class, 'index'])->name('send.user.email');
+Route::post('/send-email', [SendEmailController::class, 'send'])->name('send.email.post');
+
 // Route::get('/home','App\Http\Controllers\UserController@redirect')->name('home');
 Route::get('/home', 'App\Http\Controllers\UserController@redirect')->middleware('verifyUser')->name('home');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
