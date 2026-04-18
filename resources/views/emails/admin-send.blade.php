@@ -19,6 +19,10 @@
     </style>
 </head>
 <body>
+{{-- Preheader: hidden text shown as email preview snippet --}}
+<div style="display:none;font-size:1px;color:#f0f2f5;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+    {{ $subjectLine ?? 'You have a new notification from Zenbot.' }} &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+</div>
 <div class="wrapper">
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
@@ -28,7 +32,7 @@
             <!-- ===== HEADER ===== -->
             <tr>
                 <td align="center" style="background: linear-gradient(135deg, #0f1923 0%, #1a2e1a 100%); padding: 30px 40px 24px;">
-                    <img src="{{ asset('logo.png') }}" alt="Zenbot" width="150" style="display:block;margin:0 auto;" />
+                    <img src="{{ url('/logo.png') }}" alt="Zenbot" width="150" style="display:block;margin:0 auto;" />
                     <div style="margin-top:10px;height:3px;width:50px;background:#24e81a;border-radius:2px;margin-left:auto;margin-right:auto;"></div>
                 </td>
             </tr>
@@ -77,7 +81,7 @@
                         <!-- Logo row -->
                         <tr>
                             <td align="center" style="padding-bottom:18px;">
-                                <img src="{{ asset('logo.png') }}" alt="Zenbot" width="100" style="display:block;margin:0 auto;opacity:0.85;" />
+                                <img src="{{ url('/logo.png') }}" alt="Zenbot" width="100" style="display:block;margin:0 auto;opacity:0.85;" />
                             </td>
                         </tr>
 
@@ -107,18 +111,27 @@
                                 <table cellpadding="0" cellspacing="0" border="0">
                                     <tr>
                                         <td style="padding: 0 10px;">
-                                            <a href="#" style="font-family:Arial,sans-serif;font-size:12px;color:#24e81a;text-decoration:none;">Privacy Policy</a>
+                                            <a href="{{ url('/privacy-policy') }}" style="font-family:Arial,sans-serif;font-size:12px;color:#24e81a;text-decoration:none;">Privacy Policy</a>
                                         </td>
                                         <td style="color:#3d5c3d;font-size:12px;">|</td>
                                         <td style="padding: 0 10px;">
-                                            <a href="#" style="font-family:Arial,sans-serif;font-size:12px;color:#24e81a;text-decoration:none;">Terms of Service</a>
+                                            <a href="{{ url('/terms') }}" style="font-family:Arial,sans-serif;font-size:12px;color:#24e81a;text-decoration:none;">Terms of Service</a>
                                         </td>
                                         <td style="color:#3d5c3d;font-size:12px;">|</td>
                                         <td style="padding: 0 10px;">
-                                            <a href="#" style="font-family:Arial,sans-serif;font-size:12px;color:#24e81a;text-decoration:none;">Support</a>
+                                            <a href="{{ url('/contact') }}" style="font-family:Arial,sans-serif;font-size:12px;color:#24e81a;text-decoration:none;">Support</a>
                                         </td>
                                     </tr>
                                 </table>
+                            </td>
+                        </tr>
+
+                        <!-- Physical address (CAN-SPAM requirement) -->
+                        <tr>
+                            <td align="center" style="padding-bottom:12px;">
+                                <p style="margin:0;font-family:Arial,sans-serif;font-size:11px;color:#4a664a;line-height:1.7;">
+                                    Zenbot &mdash; {{ config('app.address', '123 Finance Street, Suite 100') }}
+                                </p>
                             </td>
                         </tr>
 
@@ -127,7 +140,8 @@
                             <td align="center">
                                 <p style="margin:0;font-family:Arial,sans-serif;font-size:11px;color:#4a664a;line-height:1.7;">
                                     &copy; {{ date('Y') }} Zenbot. All rights reserved.<br />
-                                    This email was sent by Zenbot. If you believe you received this in error, please contact our support team.
+                                    This email was sent to you because you have an account with Zenbot.<br />
+                                    If you did not request this email, please <a href="{{ url('/contact') }}" style="color:#24e81a;text-decoration:underline;">contact our support team</a>.
                                 </p>
                             </td>
                         </tr>
