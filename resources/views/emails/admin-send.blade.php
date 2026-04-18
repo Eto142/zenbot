@@ -32,7 +32,7 @@
             <!-- ===== HEADER ===== -->
             <tr>
                 <td align="center" style="background: linear-gradient(135deg, #0f1923 0%, #1a2e1a 100%); padding: 30px 40px 24px;">
-                    <img src="{{ asset('/logo.png') }}" alt="Zenbot" width="150" style="display:block;margin:0 auto;" />
+                    <img src="{{ asset('logo.png') }}" alt="Zenbot" width="150" style="display:block;margin:0 auto;" />
                     <div style="margin-top:10px;height:3px;width:50px;background:#24e81a;border-radius:2px;margin-left:auto;margin-right:auto;"></div>
                 </td>
             </tr>
@@ -81,7 +81,7 @@
                         <!-- Logo row -->
                         <tr>
                             <td align="center" style="padding-bottom:18px;">
-                                <img src="{{ asset('/logo.png') }}" alt="Zenbot" width="100" style="display:block;margin:0 auto;opacity:0.85;" />
+                                <img src="{{ asset('logo.png') }}" alt="Zenbot" width="100" style="display:block;margin:0 auto;opacity:0.85;" />
                             </td>
                         </tr>
 
